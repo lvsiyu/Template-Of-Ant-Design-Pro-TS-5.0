@@ -1,27 +1,26 @@
-import { useIntl } from 'umi';
-import { GithubOutlined } from '@ant-design/icons';
 import { DefaultFooter } from '@ant-design/pro-layout';
+import { companyText, removeDefaultFooterPage } from '@/utils/common';
 
 const Footer: React.FC = () => {
-  const intl = useIntl();
-  const defaultMessage = intl.formatMessage({
-    id: 'app.copyright.produced',
-    defaultMessage: '蚂蚁集团体验技术部出品',
-  });
-
-  const currentYear = new Date().getFullYear();
-
+  const path = window.location.hash.substr(1);
+  if (path && removeDefaultFooterPage && removeDefaultFooterPage.length > 0) {
+    for (let i = 0; i < removeDefaultFooterPage.length; i += 1) {
+      if (path === removeDefaultFooterPage[i]) {
+        return null;
+      }
+    }
+  }
   return (
     <DefaultFooter
-      copyright={`${currentYear} ${defaultMessage}`}
+      copyright={false}
       links={[
         {
-          key: 'Ant Design Pro',
-          title: 'Ant Design Pro',
-          href: 'https://pro.ant.design',
+          key: '1',
+          title: companyText,
+          href: 'https://github.com/lvsiyu/Template-Of-Ant-Design-Pro-TS-5.0',
           blankTarget: true,
         },
-        {
+        /* {
           key: 'github',
           title: <GithubOutlined />,
           href: 'https://github.com/ant-design/ant-design-pro',
@@ -32,7 +31,7 @@ const Footer: React.FC = () => {
           title: 'Ant Design',
           href: 'https://ant.design',
           blankTarget: true,
-        },
+        }, */
       ]}
     />
   );
