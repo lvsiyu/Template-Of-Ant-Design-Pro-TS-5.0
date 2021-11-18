@@ -76,8 +76,8 @@ const Login: React.FC = () => {
       <div className={styles.content}>
         <LoginForm
           logo={<img alt="logo" src="/logo.svg" />}
-          title="Ant Design"
-          subTitle={intl.formatMessage({ id: 'pages.layouts.userLayout.title' })}
+          title="用户登录"
+          subTitle="后台管理模板(使用TS版本)"
           initialValues={{
             autoLogin: true,
           }}
@@ -89,7 +89,7 @@ const Login: React.FC = () => {
             <LoginMessage
               content={intl.formatMessage({
                 id: 'pages.login.accountLogin.errorMessage',
-                defaultMessage: '账户或密码错误(admin/ant.design)',
+                defaultMessage: '账户或密码错误(admin/123456)',
               })}
             />
           )}
@@ -99,10 +99,7 @@ const Login: React.FC = () => {
               size: 'large',
               prefix: <UserOutlined className={styles.prefixIcon} />,
             }}
-            placeholder={intl.formatMessage({
-              id: 'pages.login.username.placeholder',
-              defaultMessage: '用户名: admin or user',
-            })}
+            placeholder="用户名: admin 或 user"
             rules={[
               {
                 required: true,
@@ -121,7 +118,7 @@ const Login: React.FC = () => {
               size: 'large',
               prefix: <LockOutlined className={styles.prefixIcon} />,
             }}
-            placeholder="密码:123456"
+            placeholder="密码: 123456"
             rules={[
               {
                 required: true,
