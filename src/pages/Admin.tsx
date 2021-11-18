@@ -1,45 +1,41 @@
-import React from 'react';
-import { HeartTwoTone, SmileTwoTone } from '@ant-design/icons';
-import { Card, Typography, Alert } from 'antd';
-import { PageHeaderWrapper } from '@ant-design/pro-layout';
+import React, { useState /* , useEffect */ } from 'react';
+import { Card, Result, Button, Space } from 'antd';
+import { PageContainer } from '@ant-design/pro-layout';
+import { randomLogo } from '@/utils/emoticons';
 
-const Admin: React.FC = () => {
+export default (): React.ReactNode => {
+  const [logoName, setLogoName] = useState(
+    randomLogo[parseInt(`${Math.random() * randomLogo.length}`, 10)],
+  );
+
+  /* useEffect(() => {
+    setInterval(() => {
+      const name = randomLogo[parseInt(`${Math.random() * randomLogo.length}`, 10)];
+      setLogoName(name);
+    }, 1000);
+  }, []); */
+
   return (
-    <PageHeaderWrapper content={' 这个页面只有 admin 权限才能查看'}>
+    <PageContainer>
       <Card>
-        <Alert
-          message={'更快更强的重型组件，已经发布。'}
-          type="success"
-          showIcon
-          banner
-          style={{
-            margin: -12,
-            marginBottom: 48,
-          }}
+        <Result
+          icon={<img src={logoName} />}
+          title="这是只有管理员才能看到的界面，普通用户登录无法看到"
+          subTitle="使用user账号重新登陆后就无法看到该界面，具体修改请在route文件中以及access文件中修改"
+          extra={
+            <Space>
+              <Button
+                type="primary"
+                onClick={() =>
+                  setLogoName(randomLogo[parseInt(`${Math.random() * randomLogo.length}`, 10)])
+                }
+              >
+                刷新表情
+              </Button>
+            </Space>
+          }
         />
-        <Typography.Title
-          level={2}
-          style={{
-            textAlign: 'center',
-          }}
-        >
-          <SmileTwoTone /> Ant Design Pro <HeartTwoTone twoToneColor="#eb2f96" /> You
-        </Typography.Title>
       </Card>
-      <p
-        style={{
-          textAlign: 'center',
-          marginTop: 24,
-        }}
-      >
-        Want to add more pages? Please refer to{' '}
-        <a href="https://pro.ant.design/docs/block-cn" target="_blank" rel="noopener noreferrer">
-          use block
-        </a>
-        。
-      </p>
-    </PageHeaderWrapper>
+    </PageContainer>
   );
 };
-
-export default Admin;

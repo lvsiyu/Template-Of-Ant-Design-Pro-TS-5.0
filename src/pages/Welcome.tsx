@@ -1,60 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Card, Result, Button, Space } from 'antd';
+import { Link } from 'umi';
 import { PageContainer } from '@ant-design/pro-layout';
-import { Card, Alert, Typography } from 'antd';
-import styles from './Welcome.less';
+import { randomLogo } from '@/utils/emoticons';
 
-const CodePreview: React.FC = ({ children }) => (
-  <pre className={styles.pre}>
-    <code>
-      <Typography.Text copyable>{children}</Typography.Text>
-    </code>
-  </pre>
-);
+export default (): React.ReactNode => {
+  const [logoName, setLogoName] = useState(
+    randomLogo[parseInt(`${Math.random() * randomLogo.length}`, 10)],
+  );
 
-const Welcome: React.FC = () => {
+  /* useEffect(() => {
+    setInterval(() => {
+      const name = randomLogo[parseInt(`${Math.random() * randomLogo.length}`, 10)];
+      setLogoName(name);
+    }, 1000);
+  }, []); */
   return (
     <PageContainer>
       <Card>
-        <Alert
-          message={'更快更强的重型组件，已经发布。'}
-          type="success"
-          showIcon
-          banner
-          style={{
-            margin: -12,
-            marginBottom: 24,
-          }}
+        <Result
+          icon={<img src={logoName} />}
+          title="欢迎使用后台管理模板"
+          extra={
+            <Space>
+              <Button type="primary">
+                <Link to="/charts/antd-charts">开始探索</Link>
+              </Button>
+              <Button
+                type="primary"
+                onClick={() =>
+                  setLogoName(randomLogo[parseInt(`${Math.random() * randomLogo.length}`, 10)])
+                }
+              >
+                刷新表情
+              </Button>
+            </Space>
+          }
         />
-        <Typography.Text strong>
-          高级表格{' '}
-          <a
-            href="https://procomponents.ant.design/components/table"
-            rel="noopener noreferrer"
-            target="__blank"
-          >
-            欢迎使用
-          </a>
-        </Typography.Text>
-        <CodePreview>yarn add @ant-design/pro-table</CodePreview>
-        <Typography.Text
-          strong
-          style={{
-            marginBottom: 12,
-          }}
-        >
-          高级布局{' '}
-          <a
-            href="https://procomponents.ant.design/components/layout"
-            rel="noopener noreferrer"
-            target="__blank"
-          >
-            欢迎使用
-          </a>
-        </Typography.Text>
-        <CodePreview>yarn add @ant-design/pro-layout</CodePreview>
       </Card>
     </PageContainer>
   );
 };
-
-export default Welcome;
