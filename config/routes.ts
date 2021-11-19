@@ -229,7 +229,7 @@ export default [
       },
     ],
   },
-  /* {
+  {
     name: '账户模板',
     icon: 'UserOutlined',
     path: '/Account',
@@ -248,7 +248,7 @@ export default [
         component: './404',
       },
     ],
-  }, */
+  },
   {
     path: '/',
     redirect: '/welcome',
