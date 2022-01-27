@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, DatePicker, Space, Table } from 'antd';
+import { Button, DatePicker, Space /* Table */ } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ProColumns } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';
@@ -95,13 +95,15 @@ const ChooseTableList: React.FC = () => {
         search={{
           labelWidth: 120,
         }}
-        rowSelection={{
-          // 自定义选择项参考: https://ant.design/components/table-cn/#components-table-demo-row-selection-custom
-          // 注释该行则默认不显示下拉选项
-          selections: [Table.SELECTION_ALL, Table.SELECTION_INVERT],
-          // 由于proTabele数据是异步加载的，所以不能用defaultSelectedRowKeys默认选择
-          // defaultSelectedRowKeys: [1],
-        }}
+        rowSelection={
+          {
+            // 自定义选择项参考: https://ant.design/components/table-cn/#components-table-demo-row-selection-custom
+            // 注释该行则默认不显示下拉选项
+            // selections: [Table.SELECTION_ALL, Table.SELECTION_INVERT],
+            // 由于proTabele数据是异步加载的，所以不能用defaultSelectedRowKeys默认选择
+            // defaultSelectedRowKeys: [1],
+          }
+        }
         tableAlertRender={({ selectedRowKeys, selectedRows, onCleanSelected }) => (
           <Space size={24}>
             <span>
