@@ -289,6 +289,30 @@ const BasisTableInnerData = async (req: Request, res: Response) => {
   });
 };
 
+const ChooseTableData = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  const tableListDataSource = [];
+  const creators = ['付小小', '曲丽丽', '林东东', '陈帅帅', '兼某某'];
+  for (let i = 0; i < 30; i += 1) {
+    tableListDataSource.push({
+      key: i,
+      name: 'AppName',
+      containers: Math.floor(Math.random() * 20),
+      callNumber: Math.floor(Math.random() * 2000),
+      progress: Math.ceil(Math.random() * 100) + 1,
+      creator: creators[Math.floor(Math.random() * creators.length)],
+      status: valueEnumMark[Math.floor(Math.random() * 10) % 4],
+      createdAt: Date.now() - Math.floor(Math.random() * 100000),
+      memo: i % 2 === 1 ? '很长很长很长很长很长很长很长的文字要展示但是要留下尾巴' : '简短备注文案',
+    });
+  }
+  res.send({
+    code: 200,
+    data: tableListDataSource,
+    msg: 'success',
+  });
+};
+
 const EditTableData = [
   {
     id: 624748504,
@@ -420,6 +444,7 @@ const ProTableData = async (req: Request, res: Response) => {
 export default {
   'GET /api/table/BasisTableData': BasisTableData,
   'GET /api/table/BasisTableInnerData': BasisTableInnerData,
+  'GET /api/table/ChooseTableData': ChooseTableData,
   'GET /api/table/EditTableData': GetEditTableData,
   'POST /api/table/EditTableData': CreateEditTableData,
   'PUT /api/table/EditTableData': UploadEditTableData,

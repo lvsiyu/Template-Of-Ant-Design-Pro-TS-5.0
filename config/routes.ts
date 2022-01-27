@@ -120,6 +120,11 @@ export default [
         component: './Table/ModalTable',
       },
       {
+        path: '/table/choose-table',
+        name: '选择表格',
+        component: './Table/ChooseTable',
+      },
+      {
         path: '/table/tab-table',
         name: '分页表格',
         component: './Table/TabTable',
