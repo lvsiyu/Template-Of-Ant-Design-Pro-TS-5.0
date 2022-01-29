@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, DatePicker, Space /* Table */ } from 'antd';
+import { Button, DatePicker, Space /* Table */, message } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ProColumns } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';
@@ -22,7 +22,7 @@ const ChooseTableList: React.FC = () => {
       width: 120,
       dataIndex: 'name',
       fixed: 'left',
-      render: (_) => <a>{_}</a>,
+      render: (_) => <a onClick={() => message.success('点击了名称')}>{_}</a>,
     },
     {
       title: '容器数量',
@@ -53,11 +53,11 @@ const ChooseTableList: React.FC = () => {
       valueType: 'select',
       valueEnum: {
         all: { text: '全部' },
-        付小小: { text: '付小小' },
-        曲丽丽: { text: '曲丽丽' },
-        林东东: { text: '林东东' },
-        陈帅帅: { text: '陈帅帅' },
-        兼某某: { text: '兼某某' },
+        付小小: { text: '张三' },
+        曲丽丽: { text: '李四' },
+        林东东: { text: '王五' },
+        陈帅帅: { text: '赵六' },
+        兼某某: { text: '孙七' },
       },
     },
     {
@@ -83,7 +83,11 @@ const ChooseTableList: React.FC = () => {
       key: 'option',
       valueType: 'option',
       fixed: 'right',
-      render: () => [<a key="link">操作</a>],
+      render: () => [
+        <a key="link" onClick={() => message.success('点击了操作')}>
+          操作
+        </a>,
+      ],
     },
   ];
 
@@ -91,7 +95,11 @@ const ChooseTableList: React.FC = () => {
     <PageContainer>
       <ProTable<ChooseTableDataType>
         rowKey="key"
-        toolBarRender={() => [<Button key="show">各种操作</Button>]}
+        toolBarRender={() => [
+          <Button key="show" onClick={() => message.success('点击了各种操作')}>
+            各种操作
+          </Button>,
+        ]}
         search={{
           labelWidth: 120,
         }}
@@ -125,8 +133,8 @@ const ChooseTableList: React.FC = () => {
         tableAlertOptionRender={() => {
           return (
             <Space size={16}>
-              <a>批量操作1</a>
-              <a>批量操作2</a>
+              <a onClick={() => message.success('点击了批量操作1')}>批量操作1</a>
+              <a onClick={() => message.success('点击了批量操作2')}>批量操作2</a>
             </Space>
           );
         }}

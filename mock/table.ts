@@ -15,8 +15,6 @@ const valueEnumMark = {
   3: 'error',
 };
 
-/* const valueEnumArr = ['success', 'error', 'processing', 'default']; */
-
 const BasisTableData = async (req: Request, res: Response) => {
   await waitTime(1000);
   const basisData = [];
@@ -67,7 +65,7 @@ const ChooseTableData = async (req: Request, res: Response) => {
   for (let i = 0; i < 30; i += 1) {
     tableListDataSource.push({
       key: i,
-      name: 'AppName',
+      name: '选择名称',
       containers: Math.floor(Math.random() * 20),
       callNumber: Math.floor(Math.random() * 2000),
       progress: Math.ceil(Math.random() * 100) + 1,
