@@ -135,6 +135,11 @@ export default [
         component: './Table/EditTable',
       },
       {
+        path: '/table/drag-table',
+        name: '拖动表格',
+        component: './Table/DragTable',
+      },
+      {
         path: '/table/pro-table',
         name: '复杂表格',
         component: './Table/ProTable',
