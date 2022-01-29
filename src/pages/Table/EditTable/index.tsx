@@ -152,7 +152,8 @@ const EditTableList: React.FC = () => {
           form,
           editableKeys,
           onSave: async (_, row, newLine) => {
-            if (newLine) {
+            /* 判断依据是新增的还是编辑现有的 */
+            if (!newLine.created_at) {
               await createBasisTable(row).then((data) => {
                 if (data?.code === 200) actionRef?.current?.reload();
               });

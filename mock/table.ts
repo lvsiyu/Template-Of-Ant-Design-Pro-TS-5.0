@@ -137,7 +137,6 @@ const UploadEditTableData = async (req: Request, res: Response) => {
     state,
     created_at: new Date().toJSON(),
   };
-
   EditTableData[index] = uploadData;
   res.send({
     code: 200,
