@@ -1,113 +1,142 @@
 import React, { useState } from 'react';
-import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
+import { Avatar, Tooltip, message } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ProColumns } from '@ant-design/pro-table';
-import ProTable from '@ant-design/pro-table';
-import { arrayMoveImmutable } from '@ant-design/pro-utils';
-import { MenuOutlined } from '@ant-design/icons';
+import { DragSortTable } from '@ant-design/pro-table';
+import { randomLogo } from '@/utils/emoticons';
+import type { DragTableDataType } from './data';
 import './style/index.less';
 
-const DragHandle = SortableHandle(() => <MenuOutlined style={{ cursor: 'grab', color: '#999' }} />);
+const ProcessMap = {
+  close: 'normal',
+  running: 'active',
+  online: 'success',
+  error: 'exception',
+};
 
-const columns: ProColumns[] = [
-  {
-    title: '排序',
-    dataIndex: 'sort',
-    width: 48,
-    align: 'center',
-    className: 'drag-visible',
-    render: () => <DragHandle />,
-  },
-  {
-    title: '序号',
-    dataIndex: 'index',
-    align: 'center',
-    valueType: 'indexBorder',
-    width: 48,
-  },
-  {
-    title: '姓名',
-    dataIndex: 'name',
-    className: 'drag-visible',
-  },
-  {
-    title: '年龄',
-    dataIndex: 'age',
-  },
-  {
-    title: '地址',
-    dataIndex: 'address',
-  },
-];
+const valueEnumMark = {
+  0: 'close',
+  1: 'running',
+  2: 'online',
+  3: 'error',
+};
 
-const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    index: 0,
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    index: 1,
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    index: 2,
-  },
-];
+const data: DragTableDataType[] = [];
+for (let i = 0; i < 30; i += 1) {
+  data.push({
+    id: i,
+    name: '基础名称',
+    description:
+      i % 2 === 1
+        ? '我是简短一点的描述'
+        : '我是很长的一段描述很长很长的一段描述很长很长的一段描述很长很长的一段描述',
+    date: '2020-10-15',
+    time: '20:53:24',
+    progress: Math.ceil(Math.random() * 100) + 1,
+    status: valueEnumMark[Math.floor(Math.random() * 10) % 4],
+  });
+}
 
 const DragTableList: React.FC = () => {
-  const [dataSource, setDataSource] = useState(data);
-  const SortableItem = SortableElement((props: any) => <tr {...props} />);
-  const SortContainer = SortableContainer((props: any) => <tbody {...props} />);
+  const [dataSource, setdataSource] = useState(data);
 
-  const onSortEnd = ({ oldIndex, newIndex }: { oldIndex: number; newIndex: number }) => {
-    if (oldIndex !== newIndex) {
-      const newData = arrayMoveImmutable([...dataSource], oldIndex, newIndex).filter((el) => !!el);
-      setDataSource([...newData]);
-    }
+  const handleDragSortEnd = (newDataSource: any) => {
+    setdataSource(newDataSource);
+    message.success('修改列表排序成功');
   };
 
-  const DraggableContainer = (props: any) => (
-    <SortContainer
-      useDragHandle
-      disableAutoscroll
-      helperClass="row-dragging"
-      onSortEnd={onSortEnd}
-      {...props}
+  const tableDate = (_text: unknown, record: DragTableDataType) => (
+    <Tooltip title={`${record.date} ${record.time}`}>
+      <span>{`${record.date} ${record.time}`}</span>
+    </Tooltip>
+  );
+
+  const dragHandleRender = () => (
+    <Avatar
+      style={{ margin: '0px auto', cursor: 'pointer' }}
+      size={22}
+      icon={<img src={randomLogo[parseInt(`${Math.random() * randomLogo.length}`, 10)]} />}
     />
   );
 
-  const DraggableBodyRow = (props: any) => {
-    const { className, style, ...restProps } = props;
-    // function findIndex base on Table rowKey props and should always be a right array index
-    const index = dataSource.findIndex((x) => x.index === restProps['data-row-key']);
-    return <SortableItem index={index} {...restProps} />;
-  };
+  const columns: ProColumns[] = [
+    {
+      title: '排序',
+      dataIndex: 'sort',
+      search: false,
+      align: 'center',
+      width: 48,
+    },
+    {
+      title: '序号',
+      dataIndex: 'index',
+      valueType: 'indexBorder',
+      align: 'center',
+      width: 48,
+    },
+    {
+      title: '基本名称',
+      dataIndex: 'name',
+      ellipsis: true,
+    },
+    {
+      title: '基本描述',
+      dataIndex: 'description',
+      search: false,
+      ellipsis: true,
+    },
+    {
+      title: '日期显示',
+      dataIndex: 'date-time',
+      ellipsis: true,
+      render: (text, record) => tableDate(text, record),
+    },
+    {
+      title: '状态',
+      dataIndex: 'status',
+      initialValue: 'all',
+      valueEnum: {
+        all: { text: '全部', status: 'Default' },
+        close: { text: '关闭', status: 'Default' },
+        running: { text: '运行中', status: 'Processing' },
+        online: { text: '已上线', status: 'Success' },
+        error: { text: '异常', status: 'Error' },
+      },
+    },
+    {
+      title: '进度展示',
+      dataIndex: 'progress',
+      valueType: (item) => ({
+        type: 'progress',
+        status: ProcessMap[item.status],
+      }),
+    },
+    {
+      title: '时间选择',
+      dataIndex: 'selectTime',
+      hideInTable: true,
+      valueType: 'dateTime',
+    },
+  ];
 
   return (
     <PageContainer>
-      <ProTable
-        headerTitle="拖拽排序"
+      <DragSortTable
+        headerTitle="拖拽排序(目前无法在request中使用)"
         columns={columns}
-        rowKey="index"
-        bordered
-        pagination={false}
-        dataSource={dataSource}
-        components={{
-          body: {
-            wrapper: DraggableContainer,
-            row: DraggableBodyRow,
-          },
+        rowKey="id"
+        search={{
+          labelWidth: 120,
         }}
+        bordered
+        pagination={{
+          showQuickJumper: true,
+          pageSize: 10,
+        }}
+        dataSource={dataSource}
+        dragSortKey="sort"
+        dragSortHandlerRender={dragHandleRender}
+        onDragSortEnd={handleDragSortEnd}
       />
     </PageContainer>
   );
