@@ -195,6 +195,11 @@ export default [
         component: './Form/StepModalForm',
       },
       {
+        path: '/form/list-form',
+        name: '列表表单',
+        component: './Form/ListForm',
+      },
+      {
         component: './404',
       },
     ],
