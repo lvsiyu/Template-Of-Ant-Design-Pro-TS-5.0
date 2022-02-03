@@ -2,13 +2,13 @@ import React from 'react';
 import { message } from 'antd';
 import { PageContainer, FooterToolbar } from '@ant-design/pro-layout';
 import ProCard from '@ant-design/pro-card';
-import { uploadBasisForm } from './services';
+import { uploadListForm } from './services';
 import ProForm, { ProFormList, ProFormText, ProFormDependency } from '@ant-design/pro-form';
-import type { basisFormDataType } from './data';
+import type { listFormDataType } from './data';
 
 const BasisForm: React.FC = () => {
-  const submitForm = (values: basisFormDataType) => {
-    uploadBasisForm(values).then((data) => {
+  const submitForm = (values: listFormDataType) => {
+    uploadListForm(values).then((data) => {
       if (data.code === 200) {
         message.success('提交成功');
       } else {

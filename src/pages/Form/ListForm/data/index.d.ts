@@ -1,8 +1,8 @@
-export type basisFormDataType = {
+export type listFormDataType = {
   text1?: string;
 };
 
-export type basisFormRespionse = {
+export type uploadListFormResPonse = {
   code: number;
   data: basisFormDataType;
   msg: string;
