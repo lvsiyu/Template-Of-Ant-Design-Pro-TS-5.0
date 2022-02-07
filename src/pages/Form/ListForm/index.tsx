@@ -25,7 +25,7 @@ const BasisForm: React.FC = () => {
   return (
     <PageContainer>
       <ProCard gutter={[{ xs: 8, sm: 8, md: 16, lg: 24, xl: 32 }, 16]}>
-        <ProCard title="简单列表表单" headerBordered bordered>
+        <ProCard title="简单插入表单" headerBordered bordered>
           <ProForm
             onFinish={async (values) => {
               submitForm(values);
@@ -38,8 +38,8 @@ const BasisForm: React.FC = () => {
               }}
               initialValue={[
                 {
-                  content1: '内容1',
-                  content2: '内容2',
+                  content1: '我是内容1',
+                  content2: '我是内容2',
                 },
               ]}
               itemContainerRender={(doms) => {
@@ -80,7 +80,7 @@ const BasisForm: React.FC = () => {
           </ProForm>
         </ProCard>
 
-        <ProCard title="嵌套列表表单" headerBordered bordered>
+        <ProCard title="嵌套插入表单" headerBordered bordered>
           <ProForm
             onFinish={async (values) => {
               submitForm(values);
@@ -90,7 +90,7 @@ const BasisForm: React.FC = () => {
               name="data"
               initialValue={[
                 {
-                  name: '标题1',
+                  content1: '标题1',
                 },
               ]}
               creatorButtonProps={{
@@ -101,7 +101,7 @@ const BasisForm: React.FC = () => {
                   <ProCard
                     bordered
                     extra={action}
-                    title={record?.name}
+                    title={record?.content1}
                     style={{
                       marginBottom: 8,
                     }}
@@ -112,15 +112,22 @@ const BasisForm: React.FC = () => {
               }}
             >
               <ProFormGroup>
-                <ProFormText name="name" label="姓名" />
-                <ProFormText name="nickName" label="昵称" />
+                <ProFormText
+                  name="content1"
+                  label="内容1"
+                  required
+                  rules={[{ required: true, message: '该项是必填项!' }]}
+                />
+                <ProFormText name="content2" label="内容2" />
+                <ProFormText name="content3" label="内容3" />
               </ProFormGroup>
               <ProFormList
-                name="labels"
+                name="content"
                 initialValue={[
                   {
-                    value: '333',
-                    label: '333',
+                    addContent1: '我是插入内容1',
+                    addContent2: '我是插入内容2',
+                    addContent3: '我是插入内容3',
                   },
                 ]}
                 creatorButtonProps={{
@@ -134,8 +141,9 @@ const BasisForm: React.FC = () => {
                 }}
               >
                 <ProFormGroup>
-                  <ProFormText name="value" label="值" />
-                  <ProFormText name="label" label="显示名称" />
+                  <ProFormText name="addContent1" label="插入内容1" />
+                  <ProFormText name="addContent2" label="插入内容2" />
+                  <ProFormText name="addContent3" label="插入内容3" />
                 </ProFormGroup>
               </ProFormList>
             </ProFormList>

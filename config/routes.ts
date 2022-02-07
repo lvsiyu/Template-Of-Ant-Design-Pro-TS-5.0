@@ -196,7 +196,7 @@ export default [
       },
       {
         path: '/form/list-form',
-        name: '列表表单',
+        name: '插入表单',
         component: './Form/ListForm',
       },
       {
