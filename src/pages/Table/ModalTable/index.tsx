@@ -235,6 +235,7 @@ const ModalsTableList: React.FC = () => {
       title: '序号',
       dataIndex: 'index',
       valueType: 'indexBorder',
+      align: 'center',
       width: 48,
     },
     {
