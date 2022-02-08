@@ -160,7 +160,7 @@ const BasisTableList: React.FC = () => {
           showQuickJumper: true,
           pageSize: 10,
         }}
-        headerTitle="基础表格"
+        headerTitle="基础表格 -- 根据接口请求分页数据移步卡片表格"
         request={(params) => queryBasisTable({ ...params })}
         columns={columns}
         expandable={basisInnerTableData && { expandedRowRender }}

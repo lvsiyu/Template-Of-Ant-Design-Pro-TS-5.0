@@ -114,12 +114,11 @@ const CardTableList: React.FC = () => {
         search={false}
         toolBarRender={false}
         bordered
-        cardProps={{ title: '卡片表格', bordered: true }}
+        cardProps={{ title: '卡片表格 -- 带页面请求接口，接口需要返回total', bordered: true }}
         pagination={{
           showQuickJumper: true,
           pageSize: 10,
         }}
-        headerTitle="卡片表格"
         request={(params) => queryCardTable({ ...params })}
         columns={columns}
       />
