@@ -115,6 +115,23 @@ export default [
         component: './Table/BasisTable',
       },
       {
+        path: '/table/card-table',
+        name: '卡片表格',
+        hideChildrenInMenu: true,
+        routes: [
+          {
+            path: '/table/card-table',
+            name: '卡片表格',
+            component: './Table/CardTable',
+          },
+          {
+            path: '/table/card-table/detail',
+            name: '卡片表格详情',
+            component: './Table/CardTable/detail',
+          },
+        ],
+      },
+      {
         path: '/table/modal-table',
         name: '弹框表格',
         component: './Table/ModalTable',

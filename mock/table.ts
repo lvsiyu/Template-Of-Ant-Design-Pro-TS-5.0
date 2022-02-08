@@ -209,6 +209,36 @@ const ProTableData = async (req: Request, res: Response) => {
   });
 };
 
+const GetCardTableData = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  const { current, pageSize } = req.query;
+  const pageNumber = typeof pageSize === 'string' ? parseInt(pageSize) : 10;
+
+  let cardTableData = [];
+
+  for (let i = 0; i < pageNumber; i += 1) {
+    cardTableData.push({
+      id: i,
+      name: `第${current}页第${i + 1}条数据`,
+      description:
+        i % 2 === 1
+          ? '我是简短一点的描述'
+          : '我是很长的一段描述很长很长的一段描述很长很长的一段描述很长很长的一段描述',
+      date: '2020-10-15',
+      time: '20:53:24',
+      progress: Math.ceil(Math.random() * 100) + 1,
+      status: valueEnumMark[Math.floor(Math.random() * 10) % 4],
+    });
+  }
+
+  res.send({
+    code: 200,
+    data: cardTableData,
+    total: 100,
+    msg: 'success',
+  });
+};
+
 export default {
   'GET /api/table/BasisTableData': BasisTableData,
   'GET /api/table/BasisTableInnerData': BasisTableInnerData,
@@ -219,4 +249,5 @@ export default {
   'DELETE /api/table/EditTableData': DeleteEditTableData,
   'GET /api/table/TabTableData': TabTableData,
   'GET /api/table/ProTableData': ProTableData,
+  'GET /api/table/GetCardTableData': GetCardTableData,
 };
