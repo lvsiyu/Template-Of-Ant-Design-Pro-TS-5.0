@@ -217,6 +217,11 @@ export default [
         component: './Form/ListForm',
       },
       {
+        path: '/form/rich-text-editor',
+        name: '富文本编辑',
+        component: './Form/RichTextEditor',
+      },
+      {
         component: './404',
       },
     ],
