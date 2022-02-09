@@ -1,4 +1,4 @@
-export type uploadListFormResPonse = {
+export type uploadEditorFormResPonse = {
   code: number;
   data: basisFormDataType;
   msg: string;

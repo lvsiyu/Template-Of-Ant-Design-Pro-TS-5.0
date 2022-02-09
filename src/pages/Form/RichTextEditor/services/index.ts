@@ -1,8 +1,8 @@
 import request from 'umi-request';
-import type { uploadListFormResPonse } from '../data/index';
+import type { uploadEditorFormResPonse } from '../data/index';
 
-export async function uploadListForm(
+export async function uploadEditorForm(
   params: React.SetStateAction<string>,
-): Promise<uploadListFormResPonse> {
+): Promise<uploadEditorFormResPonse> {
   return request('/api/form/uploadEditorForm', { method: 'POST', data: params });
 }

@@ -3,7 +3,7 @@ import { message } from 'antd';
 import ReactQuill from 'react-quill';
 import { PageContainer, FooterToolbar } from '@ant-design/pro-layout';
 import ProCard from '@ant-design/pro-card';
-import { uploadListForm } from './services';
+import { uploadEditorForm } from './services';
 import ProForm from '@ant-design/pro-form';
 import 'react-quill/dist/quill.snow.css';
 import './style/index.less';
@@ -13,7 +13,7 @@ const RichTextEditor: React.FC = () => {
 
   const submitForm = () => {
     console.log(quillValue);
-    uploadListForm(quillValue).then((data) => {
+    uploadEditorForm(quillValue).then((data) => {
       if (data.code === 200) {
         message.success('提交成功');
       } else {
