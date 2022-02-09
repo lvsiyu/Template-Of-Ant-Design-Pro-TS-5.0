@@ -230,6 +230,17 @@ const uploadListForm = async (req: Request, res: Response) => {
   });
 };
 
+const uploadEditorForm = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  res.send({
+    code: 200,
+    data: {
+      text1: '从接口获取的默认字段',
+    },
+    msg: 'success',
+  });
+};
+
 export default {
   'GET  /api/form/basis': basisForm,
   'POST  /api/form/basis': basisForm,
@@ -245,4 +256,5 @@ export default {
   'DELETE  /api/form/stepModalList': deleteStepModalFormData,
   'GET  /api/form/stepModalDetail': getStepModalFormDetail,
   'POST  /api/form/uploadListForm': uploadListForm,
+  'POST  /api/form/uploadEditorForm': uploadEditorForm,
 };
