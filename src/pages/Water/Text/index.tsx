@@ -8,13 +8,13 @@ const TextWaterWave: React.FC = () => {
   return (
     <PageContainer>
       <WaterMark content="我是文字水印">
-        <ProCard style={{ height: '500px' }} title="普通水印" headerBordered></ProCard>
+        <ProCard style={{ height: '500px' }} title="普通水印" headerBordered />
       </WaterMark>
 
       <WaterMark content="我是文字水印" fontColor="blue" offsetTop={210}>
         <ProCard title="纸张褶皱效果下的文字水印" headerBordered style={{ marginTop: '1rem' }}>
           <div className={styles.svgBox}>
-            <div className={styles.svgContent}></div>
+            <div className={styles.svgContent} />
             <svg>
               <filter id="roughpaper">
                 <feTurbulence

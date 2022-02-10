@@ -287,6 +287,21 @@ export default [
     ],
   },
   {
+    name: '其他模板',
+    icon: 'DribbbleOutlined',
+    path: '/Other',
+    routes: [
+      {
+        path: '/other/color-pick',
+        name: '拾色器',
+        component: './Other/ColorPick',
+      },
+      {
+        component: './404',
+      },
+    ],
+  },
+  {
     path: '/',
     redirect: '/welcome',
   },
