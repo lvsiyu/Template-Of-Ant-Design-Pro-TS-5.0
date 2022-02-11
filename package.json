@@ -60,6 +60,7 @@
     "antd": "4.16.13",
     "bizcharts": "^4.1.9",
     "classnames": "^2.2.6",
+    "js-export-excel": "^1.1.4",
     "lodash": "^4.17.11",
     "moment": "^2.25.3",
     "omit.js": "^2.0.2",

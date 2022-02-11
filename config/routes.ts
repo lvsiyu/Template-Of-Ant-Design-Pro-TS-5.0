@@ -297,6 +297,11 @@ export default [
         component: './Other/ColorPick',
       },
       {
+        path: '/other/export-excel',
+        name: '导出excel',
+        component: './Other/ExportExcel',
+      },
+      {
         component: './404',
       },
     ],
