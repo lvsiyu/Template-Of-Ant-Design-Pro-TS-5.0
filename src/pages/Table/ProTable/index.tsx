@@ -35,7 +35,7 @@ const columns: ProColumns<ProTableDataType>[] = [
   {
     title: '状态',
     dataIndex: 'status',
-    initialValue: 'all',
+    initialValue: '全部',
     valueEnum: {
       default: { text: '关闭', status: 'Default' },
       processing: { text: '运行中', status: 'Processing' },
