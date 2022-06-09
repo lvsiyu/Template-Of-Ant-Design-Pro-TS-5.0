@@ -68,7 +68,7 @@ const ChooseTableList: React.FC = () => {
       valueType: 'date',
       sorter: (a, b) => a.createdAt - b.createdAt,
       renderFormItem: () => {
-        return <RangePicker />;
+        return <RangePicker placeholder={['请输入', '请输入']} />;
       },
     },
     {
