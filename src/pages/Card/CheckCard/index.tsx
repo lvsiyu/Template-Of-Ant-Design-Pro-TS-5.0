@@ -14,9 +14,9 @@ export default (): React.ReactNode => {
           }}
           defaultValue="A"
         >
-          <CheckCard title="Card A" description="选项一" value="A" />
-          <CheckCard title="Card B" description="选项二" value="B" />
-          <CheckCard title="Card C" disabled description="选项三，这是一个不可选项" value="C" />
+          <CheckCard title="卡片1" description="选项一" value="A" />
+          <CheckCard title="卡片2" description="选项二" value="B" />
+          <CheckCard title="卡片3" disabled description="选项三，这是一个不可选项" value="C" />
         </CheckCard.Group>
       </ProCard>
 
@@ -29,13 +29,13 @@ export default (): React.ReactNode => {
           defaultValue={['A']}
         >
           <CheckCard
-            title="Card A"
-            description="选择一个由流程编排提供的典型用户案例，可以从中学习到流程编排很多设计理念"
+            title="卡片1"
+            description="我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容"
             value="A"
           />
           <CheckCard
-            title="Card B"
-            description="选择一个由流程编排提供的典型用户案例，可以从中学习到流程编排很多设计理念"
+            title="卡片2"
+            description="我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容"
             value="B"
           />
         </CheckCard.Group>
@@ -48,12 +48,12 @@ export default (): React.ReactNode => {
         <h3>只有图片和描述时</h3>
         <CheckCard
           avatar="https://gw.alipayobjects.com/zos/bmw-prod/f601048d-61c2-44d0-bf57-ca1afe7fd92e.svg"
-          description="选择一个由流程编排提供的典型用户案例，可以从中学习到流程编排很多设计理念。"
+          description="我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容"
         />
         <h3>只有标题和描述时</h3>
         <CheckCard
           title="示例"
-          description="选择一个由流程编排提供的典型用户案例，可以从中学习到流程编排很多设计理念。"
+          description="我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容"
         />
         <h3>只有标题和图片</h3>
         <CheckCard
@@ -63,7 +63,7 @@ export default (): React.ReactNode => {
         <h3>只有标题</h3>
         <CheckCard title="示例" />
         <h3>只有描述时</h3>
-        <CheckCard description="选择一个由流程编排提供的典型用户案例，可以从中学习到流程编排很多设计理念。" />
+        <CheckCard description="我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容" />
       </ProCard>
 
       <ProCard title="自定义标题" bordered headerBordered style={{ marginTop: '1rem' }}>
@@ -75,11 +75,11 @@ export default (): React.ReactNode => {
               <Tag color="blue">blue</Tag>
             </div>
           }
-          description="选择一个由流程编排提供的典型用户案例，可以从中学习到流程编排很多设计理念"
+          description="我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容"
         />
         <CheckCard
           title="标题内容过长会自动进行省略，标题内容过长会自动进行省略"
-          description="选择一个由流程编排提供的典型用户案例，可以从中学习到流程编排很多设计理念"
+          description="我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容"
         />
       </ProCard>
 
@@ -105,13 +105,13 @@ export default (): React.ReactNode => {
         <CheckCard.Group style={{ width: '100%' }} size="small">
           <Row>
             <Col span={8}>
-              <CheckCard title="Card A" description="This is the description" value="A" />
+              <CheckCard title="卡片1" description="我是内容我是内容我是内容我是内容" value="A" />
             </Col>
             <Col span={8}>
-              <CheckCard title="Card B" description="This is the description" value="B" />
+              <CheckCard title="卡片2" description="我是内容我是内容我是内容我是内容" value="B" />
             </Col>
             <Col span={8}>
-              <CheckCard title="Card C" description="This is the description" value="C" />
+              <CheckCard title="卡片3" description="我是内容我是内容我是内容我是内容" value="C" />
             </Col>
           </Row>
         </CheckCard.Group>

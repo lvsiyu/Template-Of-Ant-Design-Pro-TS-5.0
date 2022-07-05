@@ -12,11 +12,11 @@ export default (): React.ReactNode => {
       <ProCard split="vertical" bordered>
         <ProCard colSpan="25%">
           <Steps direction="vertical" size="small" current={current} style={{ height: 320 }}>
-            <Step title="填写基本信息" />
-            <Step title="配置模板" />
-            <Step title="配置访问" />
-            <Step title="配置部署和调度" />
-            <Step title="预览" />
+            <Step title="第一步" />
+            <Step title="第二步" />
+            <Step title="第三步" />
+            <Step title="第四步" />
+            <Step title="第五步" />
           </Steps>
         </ProCard>
         <ProCard title="流量占用情况">
@@ -27,7 +27,7 @@ export default (): React.ReactNode => {
               onClick={() => setCurrent(current + 1)}
               disabled={current === 5}
             >
-              下一步
+              {current >= 4 ? '完成' : '下一步'}
             </Button>
             <Button key="pre" onClick={() => setCurrent(current - 1)} disabled={current === 0}>
               上一步

@@ -15,16 +15,16 @@ export default (): React.ReactNode => {
         bordered
         headerBordered
       >
-        <ProCard title="左侧详情" colSpan="300px">
+        <ProCard title="左侧标题" colSpan="300px">
           左侧内容
         </ProCard>
-        <ProCard title="流量占用情况">
+        <ProCard title="右侧标题">
           <div style={{ height: 160 }}>右侧内容</div>
         </ProCard>
       </ProCard>
 
       <ProCard split="vertical" style={{ marginTop: 20 }}>
-        <ProCard title="左侧详情" colSpan="30%">
+        <ProCard title="左侧标题" colSpan="30%">
           左侧内容
         </ProCard>
         <ProCard title="左右分栏子卡片带标题" headerBordered>
@@ -33,10 +33,12 @@ export default (): React.ReactNode => {
       </ProCard>
 
       <ProCard headerBordered title="卡片布局" gutter={[16, 16]} style={{ marginTop: 20 }}>
-        <ProCard colSpan="300px" title="title" headerBordered bordered>
+        <ProCard colSpan="300px" title="左侧标题" headerBordered bordered>
           300px
         </ProCard>
-        <ProCard bordered>Auto</ProCard>
+        <ProCard bordered headerBordered title="右侧自适应宽度标题">
+          右侧自适应宽度内容
+        </ProCard>
       </ProCard>
 
       <ProCard
@@ -45,15 +47,15 @@ export default (): React.ReactNode => {
         gutter={[{ xs: 8, sm: 8, md: 16, lg: 24, xl: 32 }, 16]}
         style={{ marginTop: 20 }}
       >
-        <ProCard bordered>Responsive</ProCard>
-        <ProCard bordered>Responsive</ProCard>
-        <ProCard bordered>Responsive</ProCard>
+        <ProCard bordered>内容</ProCard>
+        <ProCard bordered>内容</ProCard>
+        <ProCard bordered>内容</ProCard>
       </ProCard>
 
       <ProCard headerBordered title="卡片布局" gutter={16} style={{ marginTop: 20 }}>
-        <ProCard bordered>Auto</ProCard>
-        <ProCard bordered>Auto</ProCard>
-        <ProCard bordered>Auto</ProCard>
+        <ProCard bordered>自适应宽度内容</ProCard>
+        <ProCard bordered>自适应宽度内容</ProCard>
+        <ProCard bordered>自适应宽度内容</ProCard>
       </ProCard>
 
       <ProCard
