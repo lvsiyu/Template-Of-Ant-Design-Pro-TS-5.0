@@ -112,7 +112,7 @@ const ChooseTableList: React.FC = () => {
             // defaultSelectedRowKeys: [1],
           }
         }
-        tableAlertRender={({ selectedRowKeys, selectedRows, onCleanSelected }) => (
+        tableAlertRender={({ selectedRowKeys, /* selectedRows, */ onCleanSelected }) => (
           <Space size={24}>
             <span>
               已选 {selectedRowKeys.length} 项
@@ -120,14 +120,14 @@ const ChooseTableList: React.FC = () => {
                 取消选择
               </a>
             </span>
-            <span>{`容器数量: ${selectedRows.reduce(
+            {/* <span>{`容器数量: ${selectedRows.reduce(
               (pre, item) => pre + item.containers,
               0,
             )} 个`}</span>
             <span>{`调用量: ${selectedRows.reduce(
               (pre, item) => pre + item.callNumber,
               0,
-            )} 次`}</span>
+            )} 次`}</span> */}
           </Space>
         )}
         tableAlertOptionRender={() => {
