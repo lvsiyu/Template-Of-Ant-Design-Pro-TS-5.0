@@ -302,6 +302,11 @@ export default [
         component: './Other/ExportExcel',
       },
       {
+        path: '/other/carousel',
+        name: '跑马灯',
+        component: './Other/Carousel',
+      },
+      {
         component: './404',
       },
     ],
